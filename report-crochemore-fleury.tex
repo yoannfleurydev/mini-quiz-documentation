@@ -47,9 +47,45 @@
 \newpage
 \tableofcontents
 \newpage
+
 \section{Architecture Logicielle}
+    \subsection{Base De Données}
+    \subsection{Architecture MVC}
 
 \section{Technologies}
+    \subsection{PHP}
+        \paragraph{} Nous avons choisi \texttt{PHP} car c'est un langage que nous connaissons bien, libre et qui offre une certaine souplesse. De plus, son grand catalogue de framework nous a motivé à utiliser ce langage. 
+    
+        \subsubsection{Silex}
+            \paragraph{} Silex est un micro-framework \texttt{PHP} basé sur Symfony2 et est disponible sous licence libre MIT. Il est connu pour être concis, extensible et débuggable facilement, ce qui n'est pas forcément le cas de son grand frère. Son API se veut simple d'utilisation et même "fun" à utiliser selon ses créateurs Fabien \textsc{Potencier}, le créateur du framework Symfony et Igor \textsc{Wiedler}.
+        
+        
+        \subsubsection{Composer}
+            \paragraph{}Il est rare de nos jours de trouver un projet \texttt{PHP} qui ne contienne pas le gestionnaire de dépendance qu'est Composer. Cet outil libre sous licence MIT permet de gérer des dépendances en PHP et de faciliter l'utilisation des \texttt{namespace} d'un projet grâce à un autoloader généré automatiquement. Cet outil nous a permis d'installer plusieurs dépendances :
+
+            \begin{description}
+                \item[Silex] un micro-framework basé sur Symfony
+                \item[Doctrine] un ORM qui permet d'ajouter une couche d'abstraction de la base de données pour PHP
+                \item[Parsedown] une bibliothèque qui permet d'implémenter une interprétation de la syntaxe Markdown
+                \item[Password-Compat] une autre bibliothèque permettant d'assurer la compatibilité des fonctions \texttt{password-hash} et \texttt{passsword-verify} sous une version supérieure ou égale à la version 5.3 de \texttt{PHP} alors que ces dernières fonctions ne sont utilisables que sous une version minimum 5.5 de \texttt{PHP} sans bibliothèque.
+                \item[Symfony] un framework très connu dans le monde de \texttt{PHP}. Dans notre cas, nous n'avons pris qu'une version minimale du framework, limité aux outils de débuggage, de routing, de session et de pont entre \texttt{PHP} et \texttt{Twig}.
+                \item[Twig] un moteur de templates pour \texttt{PHP}.
+            \end{description}
+        
+            \paragraph{} Toutes les dépendances ci-dessus sont évidemment disponibles sous licence libre et sont réputées pour leur sécurité. Elles sont également toutes disponibles en accès libre sur GitHub pour qui souhaiterait les consulter.
+
+    \subsection{HTML}
+        \paragraph{HTML 5}
+        
+        
+    \subsection{CSS}
+        \paragraph{CSS 3}
+        
+    \subsection{Javascript}
+        \paragraph{JQuery} 
+    
+    \subsection{MySQL}
+    
 
 \section{Documentation}
 
@@ -58,5 +94,13 @@
 \section{Bonne pratique et Sécurité}
 
 \section{Ce que nous avons appris}
+    \subsection{Problèmes rencontrés}
+    
+    
+\section{Sigles et terminologie}
+    \begin{description}
+        \item[DOM] Document Object Model. Interface indépendante de tout langage de programmation qui permet de manipuler du contenu HTML ou XML.
+        \item[HTML] HyperText Markup Language. Langage de balises permettant une représentation sémantique de données.
+    \end{description}
 
 \end{document}
