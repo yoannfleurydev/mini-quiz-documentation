@@ -50,6 +50,12 @@
 
 \section{Architecture Logicielle}
     \subsection{Base De Données}
+        \paragraph{}
+        L'architecture de notre base de données est la plus souple possible afin de permettre de futures extensions de l'application. On peut par exemple expliquer notre choix pour les tables suivantes :
+        \begin{description}
+            \item[mq\_access] Si l'application vient à évoluer, les droits d'accès ne sont pas codés en dur dans le code. Donc pour le moment, cette table contient deux lignes qui définissent l'administrateur et l'utilisateur normal, mais il est possible de rajouter par la suite un nouveau type d'utilisateur et d'ajouter des fonctions pour ceux-ci.
+            \item[mq\_answer] Nous avons choisi de stocker les réponses aux questions dans une table différente afin de pouvoir par la suite faire évoluer notre application en proposant plus de 4 réponses à chaque questions. Idem, on pourrait se servir de cette table pour proposer des réponses grâce à des requêtes AJAX et en fonction de la question, des réponses plausibles apparaissent aux yeux du créateur du quiz.
+        \end{description}
     
     \subsection{Architecture MVC}
 
