@@ -202,6 +202,10 @@
     \paragraph{Bonnes pratiques} On pourrait citer dans les bonnes pratiques l'utilisation d'un framework qui permet de fixer des conventions, des normes de code, et qui formate un peu le développeur qui l'utilise. L'utilisation du MVC peut également être mentionné dans les bonnes pratiques. Nous avons suivi des conventions basiques comme le code en anglais, les routes en anglais, des concepts de programmation comme l'utilisation de DAO et de POPO.
 
     \paragraph{Sécurité} Au niveau de la sécurité, nous avons utilisé des concepts basiques comme l'utilisation de fonctions permettant le filtrage des entrées utilisateur comme \texttt{htmlspecialchars}. Pour les mots de passe, nous avons choisi d'utiliser la technique de hashage B\_CRYPT qui est selon les spécialistes en sécurité web le meilleur moyen de protéger un mot de passe actuellement.
+    
+    \paragraph{NTUI} Nous avons pris en compte le principe NTUI\footnote{Never Trust User Input} dans notre développement côté serveur. Grâce aux méthodes fournies par PHP, mais également grâce à nos propres tests.
+    
+    \paragraph{XSS} Nous avons également pris en compte les failles XSS\footnote{Cross-Site Scripting} de façon à suivre un maximum l'OWASP\footnote{Open Web Application Security Project}
 
 \section{Ce que nous avons appris}
     \subsection{Problèmes rencontrés}
@@ -214,10 +218,13 @@
     
 \section{Sigles et terminologie}
     \begin{description}
-        \item[CSS] Cascading StyleSheet
+        \item[CSS] Cascading StyleSheet.
         \item[DOM] Document Object Model. Interface indépendante de tout langage de programmation qui permet de manipuler du contenu HTML ou XML.
         \item[HTML] HyperText Markup Language. Langage de balises permettant une représentation sémantique de données.
-        \item[URL] Uniform Resource Locator
+        \item[NTUI] Never Trust User Input.
+        \item[OWASP] Open Web Application Security Project.
+        \item[URL] Uniform Resource Locator.
+        \item[XSS] Cross-Site Scripting.
     \end{description}
 
 \end{document}
