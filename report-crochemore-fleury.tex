@@ -5,6 +5,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{graphicx}
+\usepackage{moreverb}
 
 \begin{document}
 \begin{titlepage}
@@ -122,6 +123,97 @@
             \item[.htaccess] fichier de configuration Apache qui permet d'utiliser le module de réécriture d'URL.
             \item[install.php] fichier PHP d'installation en ligne de commande de l'application Miniquiz.
         \end{description}
+        
+    \subsection{Code}
+        \paragraph{} Les classes que nous avons codé se trouve dans le dossier \verb+src+ de l'application. Voici l'architecture des classes dans ce dossier, suivi d'une brève documentation :
+        
+        \begin{verbatimtab}
+        src
+        |
+        |----DAO
+        |    |
+        |    |----DAO.php
+        |    |----AccessDAO.php
+        |    |----AnswerDAO.php
+        |    |----QuestionDAO.php
+        |    |----QuizDAO.php
+        |    |----QuizSaveDAO.php
+        |    |----UserDAO.php
+        |
+        |----Domain
+             |
+             |----Access.php
+             |----Answer.php
+             |----Question.php
+             |----Quiz.php
+             |----QuizSave.php
+             |----User.php
+        \end{verbatimtab}
+        
+        \paragraph{DAO.php}
+        \verb+DAO.php+ est la classe parente des \emph{Data Access Object} et contient un attribut de type \verb+\Doctrine\DBAL\Connection+ qui permet la connexion à la base de données.
+        
+        \begin{verbatimtab}
+        /**
+         * La classe DAO permet de définir un Data Access Object
+         * neutre qui permettra aux sous classes d'être identique dans
+         * leur conception.
+         */
+        abstract class DAO
+        
+        /**
+         * Constructeur permettant d'instancier l'attribut $db
+         */
+        public function __construct(Connection $db)
+        
+        /**
+         * Accesseur permettant de récupérer l'objet $db
+         */
+        protected function getDb()
+
+        /**
+         * Permet de construire un objet reflétant 
+         * le tuple que l'on vient de récupérer de 
+         * la base de données.
+         */
+        protected abstract function buildDomainObject($row)     
+        \end{verbatimtab} 
+        
+        \paragraph{Domain} Les classes contenues dans le package\footnote{i.e. dossier} \verb+Domain+ sont très simples. Elles sont le reflet des objets contenus dans la base de données. Prenons l'exemple de la classe \verb+User+. Dans la base de données nous avons un objet représenté ainsi :
+        
+        \begin{verbatimtab}
+        |------------------------|
+        |         mq_user        |
+        |------------------------|
+        | user_id : int          |
+        | user_login : string    |
+        | user_password : string |
+        | user_acccess_id : int  |
+        |------------------------|
+        \end{verbatimtab} 
+        
+        La classe \verb+Miniquiz\Domain\User+ est définie comme suis. C'est un reflet des données de la base de données. Il n'y a pas de constructeur. Lors de l'utilisation de la méthode \verb+buildDomainObject()+ dans les \verb+DAO+, c'est le constructeur par défaut qui est utilisé, et ensuite, on utilise les \emph{setters} afin de mettre les données dans l'objet.
+        \begin{verbatimtab}
+        |---------------------------------|
+        |           User                  |
+        |---------------------------------|
+        | - user_id                       |
+        | - user_login                    |
+        | - user_password                 |
+        | - user_acccess_id               |
+        |---------------------------------|
+        | + getUserId()                   |
+        | + setUserId(userId)             |
+        | + getUserLogin()                |
+        | + setUserLogin(userLogin)       |
+        | + getUserPassword()             |
+        | + setUserPassword(userPassword) |
+        | + getUserAccessId()             |
+        | + setUserAccessId(userAccessId) |
+        |---------------------------------|
+        \end{verbatimtab}
+        
+        \paragraph{} Il serait inutile d'expliquer cela pour les autres objet contenu dans le package \verb+Domain+, car ils suivant exactement le même schéma que \verb+mq_user+ et sa classe \texttt{PHP} \verb+User+.        
         
     \subsection{Captures d'écran}
 
